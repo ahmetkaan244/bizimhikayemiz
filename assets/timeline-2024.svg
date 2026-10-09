@@ -1,0 +1,56 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+      <stop offset="30%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#140905" stop-opacity="0.8" />
+    </radialGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42382D" />
+      <stop offset="100%" stop-color="#211C16" />
+    </linearGradient>
+    <pattern id="grain" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1" fill="#FFFFFF" opacity="0.08"/>
+      <circle cx="45" cy="20" r="1.2" fill="#000000" opacity="0.12"/>
+      <circle cx="30" cy="50" r="1" fill="#FFFFFF" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)" />
+  <rect width="800" height="600" fill="url(#grain)" />
+
+  <circle cx="400" cy="220" r="160" fill="#CBB89D" opacity="0.15" />
+  <circle cx="280" cy="170" r="80" fill="#FAF7F2" opacity="0.06" />
+
+  <rect x="28" y="28" width="744" height="544" fill="none" stroke="#FAF7F2" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="8,6" />
+  <rect x="40" y="40" width="720" height="520" fill="none" stroke="#FAF7F2" stroke-opacity="0.15" stroke-width="1" />
+
+  <path d="M 46,60 L 60,46 M 46,46 L 70,46 M 46,46 L 46,70" stroke="#FAF7F2" stroke-opacity="0.35" stroke-width="1.5" fill="none" />
+  <path d="M 754,60 L 740,46 M 754,46 L 730,46 M 754,46 L 754,70" stroke="#FAF7F2" stroke-opacity="0.35" stroke-width="1.5" fill="none" />
+  <path d="M 46,540 L 60,554 M 46,554 L 70,554 M 46,554 L 46,530" stroke="#FAF7F2" stroke-opacity="0.35" stroke-width="1.5" fill="none" />
+  <path d="M 754,540 L 740,554 M 754,554 L 730,554 M 754,554 L 754,530" stroke="#FAF7F2" stroke-opacity="0.35" stroke-width="1.5" fill="none" />
+
+  <g transform="translate(400, 210)">
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#FAF7F2" stroke-opacity="0.2" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="88" fill="none" stroke="#CBB89D" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4,6" />
+    <path d="M -45,15 Q -25,0 -5,15 T 35,15 M -45,0 Q -25,-15 -5,0 T 35,0 M -45,-15 Q -25,-30 -5,-15 T 35,-15" fill="none" stroke="#CBB89D" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif">
+    <text x="400" y="375" font-size="36" font-weight="600" fill="#FAF7F2" letter-spacing="2">
+      Birlikte Buyurken
+    </text>
+    
+    <line x1="260" y1="405" x2="380" y2="405" stroke="#D4A5A5" stroke-opacity="0.6" stroke-width="1.2" />
+    <text x="400" y="411" font-size="18" fill="#D4A5A5" text-anchor="middle">&#9829;</text>
+    <line x1="420" y1="405" x2="540" y2="405" stroke="#D4A5A5" stroke-opacity="0.6" stroke-width="1.2" />
+
+    <text x="400" y="445" font-size="20" font-style="italic" fill="#E8DEC8" letter-spacing="1">
+      Yaz 2024 - Kesfedilen Sokaklar
+    </text>
+    <text x="400" y="480" font-size="13" fill="#CBB89D" letter-spacing="3" opacity="0.8">
+      - BIZIM ANILARIMIZ -
+    </text>
+  </g>
+
+  <rect width="800" height="600" fill="url(#vig)" />
+</svg>

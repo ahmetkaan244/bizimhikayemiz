@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bizim Hikâyemiz — Dijital Aşk Günlüğü & Scrapbook</title>
+  <meta name="description" content="İki kişinin ortak hikâyesini anlatan dijital aşk günlüğü ve anı albümü.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Marck+Script&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="vintage-theme">
+  <div class="vintage-noise-overlay" aria-hidden="true"></div>
+  <canvas id="ambientCanvas" class="ambient-particles-canvas" aria-hidden="true"></canvas>
+  <!-- Navbar -->
+  <header class="journal-navbar" id="journalNavbar">
+    <div class="nav-brand">
+      <span class="nav-couple-names" id="navCoupleNames">İsim 1 ♥ İsim 2</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link">Giriş</a>
+      <a href="#story" class="nav-link">Hikâyemiz</a>
+      <a href="#album" class="nav-link">Albüm</a>
+      <a href="#memories" class="nav-link">Özel Anlar</a>
+      <a href="#letters" class="nav-link">Mektuplar</a>
+      <a href="#musicSection" class="nav-link">Şarkımız</a>
+    </nav>
+    <div class="nav-music-quick">
+      <button id="quickPlayBtn" class="quick-music-btn" title="Müziği Başlat / Duraklat" aria-label="Müziği Başlat">
+        <span class="music-note-icon">♪</span>
+        <span class="music-status-text" id="quickPlayText">Müziği Başlat</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section" id="hero">
+    <div class="hero-paper-wrapper">
+      <div class="washi-tape washi-hero-top"></div>
+
+      <div class="hero-content">
+        <div class="hero-monogram" aria-hidden="true">
+          <span class="monogram-initial" id="heroInitial1">A</span>
+          <span class="monogram-heart">&hearts;</span>
+          <span class="monogram-initial" id="heroInitial2">B</span>
+        </div>
+
+        <h1 class="hero-names" id="heroCoupleNames">
+          <span class="name-person1">İsim 1</span>
+          <span class="name-heart">&hearts;</span>
+          <span class="name-person2">İsim 2</span>
+        </h1>
+
+        <p class="hero-subtitle" id="heroSubtitle">“Bizim hikâyemiz...”</p>
+        <p class="hero-tagline" id="heroTagline">“Ve hikâyemiz hâlâ devam ediyor...”</p>
+
+        <div class="hero-divider">
+          <span class="flourish-line"></span>
+          <span class="flourish-seal">&#10084;</span>
+          <span class="flourish-line"></span>
+        </div>
+
+        <!-- Sayaçlar -->
+        <div class="relationship-counters" id="relationshipCounters">
+          <div class="counter-card" id="counterTalkCard">
+            <div class="counter-icon">💬</div>
+            <div class="counter-number-group">
+              <span class="counter-number" id="talkDaysCount">0</span>
+              <span class="counter-unit">GÜN</span>
+            </div>
+            <p class="counter-label">birbirimizi tanıyoruz</p>
+            <div class="counter-sub-live" id="talkLiveTime">00 saat : 00 dk : 00 sn</div>
+          </div>
+
+          <div class="counter-card counter-highlight" id="counterLoveCard">
+            <div class="counter-icon">❤️</div>
+            <div class="counter-number-group">
+              <span class="counter-number" id="loveDaysCount">0</span>
+              <span class="counter-unit">GÜN</span>
+            </div>
+            <p class="counter-label">yan yana yürüyoruz</p>
+            <div class="counter-sub-live" id="loveLiveTime">00 saat : 00 dk : 00 sn</div>
+          </div>
+
+          <div class="counter-card" id="counterMemoriesCard">
+            <div class="counter-icon">📸</div>
+            <div class="counter-number-group">
+              <span class="counter-number" id="memoriesTotalCount">0</span>
+              <span class="counter-unit">ANI</span>
+            </div>
+            <p class="counter-label">birlikte biriktirdiğimiz</p>
+            <div class="counter-sub-live">her biri paha biçilemez</div>
+          </div>
+
+          <div class="counter-card" id="counterSpecialCard">
+            <div class="counter-icon">✨</div>
+            <div class="counter-number-group">
+              <span class="counter-number" id="specialDaysCount">0</span>
+              <span class="counter-unit">İLK</span>
+            </div>
+            <p class="counter-label">birlikte yaşadığımız</p>
+            <div class="counter-sub-live">ve nice yenilerine...</div>
+          </div>
+        </div>
+
+        <a href="#story" class="scroll-indicator" aria-label="Aşağı kaydır ve hikâyeyi oku">
+          <span class="scroll-text">Sayfaları Çevir</span>
+          <div class="scroll-quill">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Günün Sözü -->
+  <section class="quote-banner-section" id="quoteBanner">
+    <div class="scrapbook-container">
+      <div class="vintage-quote-box">
+        <span class="quote-mark-open">“</span>
+        <blockquote class="active-quote-text" id="quoteText">
+          Bazı insanlar hayatımıza girmez, hayatımızın kendisi olur.
+        </blockquote>
+        <cite class="active-quote-author" id="quoteAuthor">— Bizim Günlüğümüzden</cite>
+        <span class="quote-mark-close">”</span>
+        <div class="quote-dots-indicator" id="quoteDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hikâyemiz / Timeline -->
+  <section class="story-section" id="story">
+    <div class="scrapbook-container">
+      <div class="section-heading">
+        <span class="heading-tag">GÜNLÜĞÜN YAPRAKLARI</span>
+        <h2 class="section-title">Bizim Hikâyemiz</h2>
+        <p class="section-description">
+          “Bazı hikâyeler bir günde başlamaz. Küçük bir mesajla, uzun bir konuşmayla, tesadüf gibi görünen bir
+          karşılaşmayla başlar...”
+        </p>
+        <div class="heading-ornament">❧ ❦ ☙</div>
+      </div>
+
+      <div class="timeline-journal-book" id="timelineContainer"></div>
+    </div>
+  </section>
+
+  <!-- Editorial Spread 1 -->
+  <section class="editorial-spread-section" id="editorialSpread1">
+    <div class="scrapbook-container">
+      <div class="editorial-card reveal-on-scroll layout-left" id="editorialCard1"></div>
+    </div>
+  </section>
+
+  <!-- Albüm / Polaroidler -->
+  <section class="album-section" id="album">
+    <div class="scrapbook-container">
+      <div class="section-heading">
+        <span class="heading-tag">ESKİ FOTOĞRAF KUTUSU</span>
+        <h2 class="section-title">Biriktirdiğimiz Anlar</h2>
+        <p class="section-description">
+          Zaman durmaz ama fotoğraflar en güzel anları sonsuz kılar. Masanın üstüne serpiştirilmiş polaroidlerimiz...
+        </p>
+        <div class="heading-ornament">📸 ❦ 🎞️</div>
+      </div>
+
+      <div class="polaroid-corkboard" id="polaroidGrid"></div>
+    </div>
+  </section>
+
+  <!-- Müzik Çalar -->
+  <section class="music-section" id="musicSection">
+    <div class="scrapbook-container">
+      <div class="vintage-player-wrapper">
+        <div class="washi-tape washi-music-top"></div>
+
+        <div class="section-heading music-heading">
+          <span class="heading-tag">AKUSTİK & NOSTALJİ</span>
+          <h2 class="section-title">Bizim Şarkımız</h2>
+          <p class="section-description">
+            “Ne zaman bu melodi çalsa, dünyadaki tüm sesler susar ve sadece senin gülüşün kalır.”
+          </p>
+        </div>
+
+        <div class="gramophone-player">
+          <div class="vinyl-display-box">
+            <div class="vinyl-record" id="vinylRecord">
+              <div class="vinyl-groove"></div>
+              <div class="vinyl-groove"></div>
+              <div class="vinyl-center">
+                <span class="vinyl-heart">&hearts;</span>
+              </div>
+            </div>
+            <div class="album-sleeve">
+              <img src="assets/album-cover.svg" alt="Bizim Melodimiz Albüm Kapağı" id="albumCoverImg"
+                class="album-cover-art">
+              <div class="album-sleeve-overlay"></div>
+            </div>
+          </div>
+
+          <div class="player-controls-box">
+            <div class="track-info">
+              <span class="track-badge">ESKİ PLAK KAYDI</span>
+              <h3 class="track-title" id="trackTitle">Karanfil Kokan Geceler & Vals</h3>
+              <p class="track-artist" id="trackArtist">Akustik Piyano & Çello (Bizim Melodimiz)</p>
+            </div>
+
+            <div class="audio-progress-container">
+              <span class="time-label" id="currentTimeLabel">0:00</span>
+              <div class="progress-bar-bg" id="progressBarBg">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+              </div>
+              <span class="time-label" id="durationLabel">3:24</span>
+            </div>
+
+            <div class="player-buttons-row">
+              <button class="player-btn-secondary" id="rewindBtn" title="10 Saniye Geri" aria-label="10 Saniye Geri">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z" />
+                </svg>
+              </button>
+
+              <button class="player-btn-main" id="mainPlayBtn" title="Müziği Başlat" aria-label="Müziği Başlat">
+                <span class="play-icon" id="playIcon">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                <span class="pause-icon hidden" id="pauseIcon">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                </span>
+              </button>
+
+              <button class="player-btn-secondary" id="forwardBtn" title="10 Saniye İleri" aria-label="10 Saniye İleri">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="player-extras-row">
+              <div class="volume-control">
+                <span class="volume-icon">🔉</span>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.7" class="vintage-slider"
+                  aria-label="Ses Seviyesi">
+              </div>
+              <label class="vinyl-crackle-toggle" title="Nostaljik gramofon cızırtısını aç/kapat">
+                <input type="checkbox" id="vinylCrackleCheck" checked>
+                <span class="crackle-label">Nostaljik Plak Cızırtısı</span>
+              </label>
+            </div>
+
+            <p class="audio-note-caption">
+              * Müziği dilediğiniz an başlatabilirsiniz. Sayfanın keyfini bu nostaljik melodi eşliğinde çıkarın.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özel Anılar -->
+  <section class="memories-section" id="memories">
+    <div class="scrapbook-container">
+      <div class="section-heading">
+        <span class="heading-tag">KUTSAL KÜÇÜK DETAYLAR</span>
+        <h2 class="section-title">Unutamadıklarımız</h2>
+        <p class="section-description">
+          Kalbimizde derin izler bırakan, her hatırladığımızda yüzümüzde tebessüm oluşturan ilklerimiz ve en
+          değerlilerimiz...
+        </p>
+        <div class="heading-ornament">💌 ❦ ☕</div>
+      </div>
+
+      <div class="special-memories-grid" id="specialMemoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- Editorial Spread 2 -->
+  <section class="editorial-spread-section" id="editorialSpread2">
+    <div class="scrapbook-container">
+      <div class="editorial-card reveal-on-scroll layout-right" id="editorialCard2"></div>
+    </div>
+  </section>
+
+  <!-- Mektuplar -->
+  <section class="letters-section" id="letters">
+    <div class="scrapbook-container">
+      <div class="section-heading">
+        <span class="heading-tag">MÜHÜRLÜ ZARFLAR</span>
+        <h2 class="section-title">Senden Bana & Benden Sana</h2>
+        <p class="section-description">
+          Kelimelerin kalpten kâğıda döküldüğü, kokusu sinmiş el yazısı mektuplarımız... Okumak için zarfa dokun.
+        </p>
+        <div class="heading-ornament">📜 ❦ ✒️</div>
+      </div>
+
+      <div class="letters-envelopes-grid" id="lettersGrid"></div>
+    </div>
+  </section>
+
+  <!-- Outro -->
+  <section class="outro-section" id="outro">
+    <div class="scrapbook-container">
+      <div class="outro-parchment-card">
+        <div class="washi-tape washi-outro-top"></div>
+
+        <div class="outro-wax-seal">
+          <span class="wax-heart">&#10084;</span>
+        </div>
+
+        <h2 class="outro-heading" id="outroHeading">Hikâyemiz burada bitmiyor...</h2>
+        <p class="outro-subheading" id="outroSubheading">Çünkü daha birlikte yazacağımız çok anı var.</p>
+
+        <div class="outro-divider">
+          <span class="flourish-line"></span>
+          <span class="flourish-seal">İsim 1 ♥ İsim 2</span>
+          <span class="flourish-line"></span>
+        </div>
+
+        <p class="outro-footer-note" id="outroFooterNote">“Sonsuza kadar saklamak istediğimiz anılar.”</p>
+
+        <div class="outro-stars-note">
+          <span>✨</span>
+          <span>Her yeni gün, seninle yepyeni bir sayfa</span>
+          <span>✨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="journal-footer">
+    <div class="scrapbook-container">
+      <p class="footer-copy">
+        İki Kalbin Ortak Günlüğü &bull; Sevgiyle Saklanmıştır.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="polaroidLightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle"
+    hidden>
+    <div class="modal-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-polaroid-frame">
+      <button class="modal-close-btn" id="lightboxCloseBtn" title="Kapat (ESC)" aria-label="Kapat">✕</button>
+
+      <button class="lightbox-nav-btn prev-btn" id="lightboxPrevBtn" title="Önceki Fotoğraf"
+        aria-label="Önceki">❮</button>
+      <button class="lightbox-nav-btn next-btn" id="lightboxNextBtn" title="Sonraki Fotoğraf"
+        aria-label="Sonraki">❯</button>
+
+      <div class="lightbox-inner-content">
+        <div class="lightbox-photo-wrap">
+          <img src="" alt="" id="lightboxImage" class="lightbox-main-img">
+        </div>
+        <div class="lightbox-caption-area">
+          <span class="lightbox-date" id="lightboxDate">Tarih</span>
+          <h3 class="lightbox-title" id="lightboxTitle">Başlık</h3>
+          <p class="lightbox-note" id="lightboxNote">Anı notu</p>
+          <div class="lightbox-counter-label" id="lightboxCounter">1 / 6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Anı Detay Modalı -->
+  <div class="modal-overlay" id="memoryDetailModal" role="dialog" aria-modal="true" aria-labelledby="memoryModalTitle"
+    hidden>
+    <div class="modal-backdrop" id="memoryModalBackdrop"></div>
+    <div class="memory-modal-parchment">
+      <button class="modal-close-btn" id="memoryModalCloseBtn" title="Kapat (ESC)" aria-label="Kapat">✕</button>
+
+      <div class="memory-modal-header">
+        <div class="memory-modal-badge" id="memoryModalIcon">💌</div>
+        <span class="memory-modal-date" id="memoryModalDate">Tarih</span>
+        <h3 class="memory-modal-title" id="memoryModalTitle">Anı Başlığı</h3>
+      </div>
+
+      <div class="memory-modal-body">
+        <div class="memory-modal-img-wrap">
+          <img src="" alt="" id="memoryModalImg" class="memory-modal-photo">
+        </div>
+        <div class="memory-modal-text">
+          <p class="memory-modal-story" id="memoryModalStory">Anı hikayesi...</p>
+          <blockquote class="memory-modal-quote" id="memoryModalQuote">“Romantik söz...”</blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mektup Okuma Modalı -->
+  <div class="modal-overlay" id="letterReaderModal" role="dialog" aria-modal="true" aria-labelledby="letterModalTitle"
+    hidden>
+    <div class="modal-backdrop" id="letterModalBackdrop"></div>
+    <div class="letter-paper-modal">
+      <button class="modal-close-btn" id="letterModalCloseBtn" title="Kapat (ESC)" aria-label="Kapat">✕</button>
+      <div class="letter-modal-crease"></div>
+
+      <div class="letter-modal-header">
+        <div class="letter-wax-stamp" id="letterWaxStamp">
+          <span>♥</span>
+        </div>
+        <div class="letter-header-meta">
+          <span class="letter-modal-date" id="letterModalDate">Tarih</span>
+          <h3 class="letter-modal-title" id="letterModalTitle">Mektup Başlığı</h3>
+          <span class="letter-modal-recipient" id="letterModalRecipient">Kime: Sevgilime</span>
+        </div>
+      </div>
+
+      <div class="letter-modal-content" id="letterModalContent"></div>
+
+      <div class="letter-modal-signature" id="letterModalSignature">
+        — Sevgilin
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
