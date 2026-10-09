@@ -2,6 +2,8 @@
 
 Çiftler için anıları, fotoğrafları, mektupları ve canlı birliktelik sayaçlarını vintage scrapbook tarzında sergileyen basit bir web günlüğü.
 
+[![Demo](https://img.shields.io/badge/Canlı%20Demo-ahmetkaan244.github.io-pink?style=for-the-badge&logo=github)](https://ahmetkaan244.github.io/bizimhikayemiz/) 
+
 Herhangi bir framework, paket yöneticisi veya derleme adımı gerektirmez; saf HTML, CSS ve JavaScript ile yazılmıştır.
 
 ## Özellikler
